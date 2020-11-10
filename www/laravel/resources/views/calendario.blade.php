@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <meta charset='utf-8' />
-        <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <meta charset='utf-8' />
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <!-- FullCalendar -->
   <link href='css/fullcalendar.css' rel='stylesheet' />
-
-
-    <!-- Custom CSS -->
-    <style>
-    body {
-        padding-top: 70px;
-
-    }
+  <!-- Custom CSS -->
+  <style>
   #calendar {
-    max-width: 800px;
+    max-width: 900px;
   }
   .col-centered{
     float: none;
     margin: 0 auto;
   }
-    </style>
-    <link href='core\main.css' rel='stylesheet' />
-    <script src='core\main.js'></script>
-    <link href='daygrid\main.css' rel='stylesheet' />
-    <script src='daygrid\main.js'></script>
+  </style>
+
+  <!-- FullCalendar Style -->
+  <link href='core\main.css' rel='stylesheet' />
+  <link href='daygrid\main.css' rel='stylesheet' />
+  <link href='list\main.css' rel='stylesheet' />
+  <link href='timegrid\main.css' rel='stylesheet' />
+  <!-- FullCalendar Script -->
+  <script src='core\main.js'></script>
+  <script src='daygrid\main.js'></script>
+  <script src='list\main.js'></script>
+  <script src='timegrid\main.js'></script>
   </head>
 <body>
 
@@ -50,23 +51,21 @@
 
     <!-- Page Content -->
     <div class="container">
-        <div class="row">
-            <div class="registro col-lg-12">
-        <div class="modal-header">
-          <button type="button" class="close"  onclick = "location.href='menu.php'" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title col-centered" id="myModalLabel">Agenda Turno</h4>
-        </div>
-          <div id="calendar" class="col-lg-12 col-centered">
-
-          </div>
-          <br>
-          <br>
-          <div class="modal-footer">
-        <br>
-        </div>
+      <div class="row">
+          <div class="registro col-lg-12">
+            <div class="modal-header">
+              <button type="button" class="close"  onclick = "location.href='menu.php'" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title col-centered" id="myModalLabel">Agenda Turno</h4>
             </div>
-        </div>
-        <!-- /.row -->
+            <div id="calendar" class="col-lg-12 col-centered"></div>
+            <br>
+            <br>
+            <div class="modal-footer">
+              <br>
+            </div>
+          </div>
+      </div>
+    <!-- /.row -->
 
     <!-- Modal -->
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -182,12 +181,11 @@
   <script src='js/fullcalendar/fullcalendar.min.js'></script>
   <script src='js/fullcalendar/fullcalendar.js'></script>
   <script src='js/fullcalendar/locale/es.js'></script>
-    <script>
+  <script>
 
   $(document).ready(function() {
-
     var date = new Date();
-       var yyyy = date.getFullYear().toString();
+    var yyyy = date.getFullYear().toString();
        var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
        var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
 
