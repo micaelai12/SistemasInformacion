@@ -1,0 +1,21 @@
+composer
+composer global require laravel/installer
+laravel
+laravel new app
+composer create-project laravel/laravel
+cd laravel
+composer create-project laravel/laravel
+cd laravel
+php artisan make:auth
+php artisan
+php artisan ui bootstrap
+composer require laravel/ui
+composer require laravel/ui="1.*"
+composer require laravel/ui="2.*"
+php artisan ui:auth -h
+php artisan ui:auth
+php artisan ui vue
+npm install && npm run dev
+php artisan migrate
+php artisan migrate:rollback --step=1
+php artisan migrate:fresh
