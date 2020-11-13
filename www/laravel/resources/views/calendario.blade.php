@@ -1,53 +1,81 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
+<head>
   <meta charset='utf-8' />
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
   <!-- FullCalendar -->
   <link href='css/fullcalendar.css' rel='stylesheet' />
   <!-- Custom CSS -->
   <style>
-  #calendar {
-    max-width: 900px;
-  }
-  .col-centered{
-    float: none;
-    margin: 0 auto;
-  }
+    #calendar {
+      max-width: 900px;
+    }
+    .col-centered{
+      float: none;
+      margin: 0 auto;
+    }
   </style>
 
   <!-- FullCalendar Style -->
-  <link href='core\main.css' rel='stylesheet' />
-  <link href='daygrid\main.css' rel='stylesheet' />
-  <link href='list\main.css' rel='stylesheet' />
-  <link href='timegrid\main.css' rel='stylesheet' />
-  <!-- FullCalendar Script -->
-  <script src='core\main.js'></script>
-  <script src='daygrid\main.js'></script>
-  <script src='list\main.js'></script>
-  <script src='timegrid\main.js'></script>
-  </head>
+  <link href='core/main.css' rel='stylesheet' />
+  <link href='daygrid/main.css' rel='stylesheet' />
+
+   <!-- FullCalendar Estilos vistas -->
+  <link href='list/main.css' rel='stylesheet' />
+  <link href='timegrid/main.css' rel='stylesheet' />
+    <!-- FullCalendar Script -->
+  <script src='core/main.js'></script>
+  <script src='daygrid/main.js'></script>
+
+  <!-- FullCalendar Plugins -->
+  <script src='list/main.js'></script>
+  <script src='timegrid/main.js'></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: ['dayGrid','interaction','timeGrid','list'],
+      defaultView:'timeGridDay',
+      contentHeight: "auto",
+      slotEventOverlap: false,
+      editable: true,
+      eventLimit: true, // allow "more" link when too many turnos
+      selectable: true,
+      hiddenDays:[0,1],
+      selectHelper: true,
+      minTime: '09:00:00', // hora final
+      maxTime: '19:00:00',
+      header:{
+        left: 'prev, next today Miboton',
+        center:'title',
+        right:'dayGridMonth, timeGridWeek, timeGridDay'
+      }
+  });
+  calendar.render();
+  });
+
+</script>
+</head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Calendario</a>
+          </div>
+      </div>
+      <!-- /.container -->
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Calendario</a>
-            </div>
-        </div>
-        <!-- /.container -->
-
-    </nav>
+  </nav>
 
     <!-- Page Content -->
     <div class="container">
@@ -129,7 +157,7 @@
 
 
 
-    <!-- Modal -->
+
     <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -181,89 +209,5 @@
   <script src='js/fullcalendar/fullcalendar.min.js'></script>
   <script src='js/fullcalendar/fullcalendar.js'></script>
   <script src='js/fullcalendar/locale/es.js'></script>
-  <script>
-
-  $(document).ready(function() {
-    var date = new Date();
-    var yyyy = date.getFullYear().toString();
-       var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
-       var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
-
-      $('#calendar').fullCalendar({
-      defaultView: 'agendaWeek',
-      allDaySlot: false,
-      defaultDate: yyyy+"-"+mm+"-"+dd,
-      slotDuration: '00:30:00',
-      contentHeight: "auto",
-      slotEventOverlap: false,
-      editable: true,
-      eventLimit: true, // allow "more" link when too many turnos
-      selectable: true,
-      hiddenDays:[0,1],
-      selectHelper: true,
-      minTime: '09:00:00', // hora final
-      maxTime: '19:00:00', // hora inicial
-      header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-      },
-      select: function(hora_inicio, hora_fin) {
-
-        $('#ModalAdd #hora_inicio').val(moment(hora_inicio).format('YYYY-MM-DD HH:mm:ss'));
-        $('#ModalAdd #hora_fin').val(moment(hora_fin).format('YYYY-MM-DD HH:mm:ss'));
-        $('#ModalAdd').modal('show');
-      },
-      eventRender: function(event, element) {
-        element.bind('dblclick', function() {
-          $('#ModalEdit #id_turno').val(event.id_turno);
-          $('#ModalEdit #titulo').val(event.titulo);
-          $('#ModalEdit').modal('show');
-        });
-      },
-      eventDrop: function(event, delta, revertFunc) { // si changement de position
-
-        edit(event);
-
-      },
-      eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
-
-        edit(event);
-
-      }
-    });
-
-    function edit(event){
-      hora_inicio = event.hora_inicio.format('YYYY-MM-DD HH:mm:ss');
-      if(event.hora_fin){
-        hora_fin = event.hora_fin.format('YYYY-MM-DD HH:mm:ss');
-      }else{
-        hora_fin = hora_inicio;
-      }
-
-      id_turno =  event.id_turno;
-
-      Event = [];
-      Event[0] = id_turno;
-      Event[1] = hora_inicio;
-      Event[2] = hora_fin;
-
-      $.ajax({
-       url: 'editEventDate.php',
-       type: "POST",
-       data: {Event:Event},
-       success: function(rep) {
-          if(rep == 'OK'){
-            alert('Evento se ha guardado correctamente');
-          }else{
-            alert('No se pudo guardar. Inténtalo de nuevo.');
-          }
-        }
-      });
-    }
-
-  });
-
-</script>
 </body>
 </html>

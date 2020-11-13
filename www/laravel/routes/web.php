@@ -12,8 +12,8 @@
 
 Route::view('/', 'home');
 Route::view('/menu', 'menu')->name('menu');
-Route::view('/calendario', 'calendario')->name('calendario');
-
+Route::get('/calendario', 'CalendarioController')->name('calendario');
+Route::resource('clientes', 'ClientesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
