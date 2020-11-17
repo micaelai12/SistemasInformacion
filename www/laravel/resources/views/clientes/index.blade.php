@@ -26,7 +26,7 @@
 		<tr>
 			<th>#</th>
 			<th>DNI</th>
-			<th>Apellido</th><th>Nombre</th>
+			<th>Apellido y Nombre</th>
 			<th>Direccion</th>
 			<th>Email</th>
 			<th>Acciones</th>
