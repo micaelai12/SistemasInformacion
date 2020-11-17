@@ -7,6 +7,7 @@
 <div class="alert alert-success" role="alert">
 	{{	Session::get('Mensaje')}}
 </div>
+<p></p>
 
 @endif
 <a href="{{url('clientes/create')}}" class="btn btn-success">Agregar cliente</a>
