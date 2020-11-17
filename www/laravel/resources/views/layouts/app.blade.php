@@ -3,10 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -18,15 +16,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="css/estilo.css" rel="stylesheet" type="text/css" >
+    <link href="css/estilo.css" rel="stylesheet" type="text/css" >
+    @yield('scripts')
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Stylist Group
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"> Stylist Group </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,7 +31,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -53,43 +49,43 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Turnos </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Alta Turnos </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Listado Turnos </a>
+                                    <a class="dropdown-item" href="{{ url('turnos') }}"> Alta Turnos </a>
+                                    <a class="dropdown-item" href="{{ url('turnos/listado') }}"> Listado Turnos </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Clientes </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Alta Clientes </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Listado Clientes </a>
+                                    <a class="dropdown-item" href="{{ url('clientes/create') }}"> Alta Clientes </a>
+                                    <a class="dropdown-item" href="{{ url('clientes')  }}"> Listado Clientes </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Peluqueros </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Alta Peluqueros </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Listado Peluqueros </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Alta Peluqueros </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Listado Peluqueros </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Servicios </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Alta Servicios </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Listado Serivicios </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Alta Servicios </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Listado Serivicios </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Usuarios </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Alta Usuarios </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Listado Usuarios </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Alta Usuarios </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Listado Usuarios </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Ayuda </a>
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Manual de Usuario </a>
-                                    <a class="dropdown-item" href="{{ route('calendario') }}"> Acerca de... </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Manual de Usuario </a>
+                                    <a class="dropdown-item" href="{{ url('calendario') }}"> Acerca de... </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -109,7 +105,6 @@
                                     </form>
                                 </div>
                             </li>
-
                         @endguest
                     </ul>
                 </div>
