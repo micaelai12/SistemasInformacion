@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
 <div class="container">
@@ -9,11 +8,15 @@
 	{{	Session::get('Mensaje')}}
 </div>
 
-
 @endif
-
-
 <a href="{{url('clientes/create')}}" class="btn btn-success">Agregar cliente</a>
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+    <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por DNI" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    <a href="{{url('clientes')}}" class="btn btn-outline-success">Limpiar busqueda</a>
+  </form>
+</nav>
 <br/>
 <br/>
 <table class="table table-light table-hover">
